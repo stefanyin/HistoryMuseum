@@ -1,0 +1,42 @@
+﻿<Window x:Class="HistoryMuseum.Supporter.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
+        Title="MainWindow" Height="570" Width="930" ResizeMode="CanResizeWithGrip"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MinHeight="728" MinWidth="1024" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Style/GridBord.xaml" />
+                <ResourceDictionary Source="/Style/ButtonVista.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="5">
+        <Grid>
+            <Grid Background="#007ACC">
+                <Label x:Name="titleLbl" Content="中控触摸屏系统" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="36" Foreground="White" Width="300" HorizontalContentAlignment="Center" BorderBrush="White" FontFamily="ZHSRXT-GBK" Height="45" Margin="0,10,0,0"/>
+                <Grid ShowGridLines="True" Name="menuBtn" Background="#007ACC"  MinWidth="200" HorizontalAlignment="Left" Width="300"  Margin="0,90,0,0" VerticalAlignment="Top" Height="604"  >
+                   <ComboBox Grid.Row="0" Grid.Column="0" Margin="0,21,0,520" Width="200" Height="50"
+                              ItemsSource="{Binding Path=ChuMoConInfos}" DisplayMemberPath="Name"  
+                              SelectedItem="{Binding Path=CurrentChuMoConInfo}" />
+                    <Button Grid.Row="1"  Template="{DynamicResource GlassButton}" Margin="50,110,50,444" Width="200" Height="50" Content="开始配置"  
+                Command="{Binding Path=ShowSelectedChuMoConInfoCommand}"/>
+                </Grid>
+                <DockPanel x:Name="ChildrenWinContent" HorizontalAlignment="Stretch" 
+                           Margin="300,22,0,0"  Background="#007ACC">
+                </DockPanel>
+                <Button x:Name="closeButton" Content="×" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Width="22" Height="22" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}" FontSize="15" Style="{StaticResource DangerButtonStyle}" Click="closeButton_Click"/>
+                <Button x:Name="maxSizeButton" Content="□" Margin="0,0,22,0" VerticalAlignment="Top" Height="22" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}" FontSize="15" Style="{StaticResource NormalButtonStyle}" Click="maxSizButton_Click" HorizontalAlignment="Right" Width="22"/>
+                <Button x:Name="miniSizeButton" Content="_" Margin="0,0,44,0" VerticalAlignment="Top" Height="22" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}" FontSize="15" Style="{StaticResource NormalButtonStyle}" Click="miniSizButton_Click" HorizontalAlignment="Right" Width="22"/>
+            </Grid>
+        </Grid>
+        <Border Name="childWindow" Visibility="{Binding WindowVisibility}" Background="#88000000" >
+            <ContentControl Content="{Binding XmlContent}" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"></ContentControl>
+        </Border>
+    </Grid>
+
+</Window>

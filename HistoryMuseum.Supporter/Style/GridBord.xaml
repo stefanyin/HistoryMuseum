@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <HierarchicalDataTemplate x:Key="tvit" ItemsSource="{Binding}">
+        <TextBlock Text="{Binding Key}"/>
+        <HierarchicalDataTemplate.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding}"/>
+            </DataTemplate>
+        </HierarchicalDataTemplate.ItemTemplate>
+    </HierarchicalDataTemplate>
+    <Style x:Key="GridBord" TargetType="Rectangle">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Stroke" Value="#2B2B2B"/>
+        <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Grid}}}" />
+        <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Grid}}}" />
+    </Style>
+</ResourceDictionary>

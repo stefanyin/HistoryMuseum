@@ -1,0 +1,86 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:HistoryMuseum.CustomControl">
+    <Style TargetType="{x:Type local:CustomListBox}">                
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                
+                <ControlTemplate TargetType="{x:Type local:CustomListBox}">
+                    
+                    <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}" BorderBrush="Transparent" BorderThickness="0">
+                        
+                                
+                            
+                        <ScrollViewer.Background>
+                            <ImageBrush />
+                        </ScrollViewer.Background>
+                        <Canvas x:Name="layoutRoot">
+                           
+                                <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                            
+                            <Grid x:Name="scrollCanvas" Canvas.Left="0" Canvas.Top="0">
+                                <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                                <Border Background="White" Opacity="0" VerticalAlignment="{TemplateBinding HorizontalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" />
+                                <ItemsPresenter/>
+                            </Grid>
+                            <Canvas.Background>
+                                <ImageBrush />
+                            </Canvas.Background>
+                        </Canvas>
+                      
+
+                    </ScrollViewer>
+                  
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:CustomListBoxItem}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:CustomListBoxItem}">
+                    <Border x:Name="Bd" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Background="{x:Null}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                        <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" TargetName="Bd" Value="{x:Null}"/>
+                            <Setter Property="Foreground" Value="{x:Null}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{x:Null}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{x:Null}"/>
+                            <Setter Property="Opacity" TargetName="Bd" Value="0.4"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{x:Null}"/>
+                            <Setter Property="Foreground" Value="{x:Null}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{x:Null}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

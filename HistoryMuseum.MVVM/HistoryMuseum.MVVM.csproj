@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB7387EC-8A6C-4422-8C61-42E73DE4D87B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HistoryMuseum.MVVM</RootNamespace>
+    <AssemblyName>HistoryMuseum.MVVM</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <ExpressionBlendVersion>12.0.60617.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="3DTools, Version=1.0.2825.25744, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\3DTools.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="SFLib">
+      <HintPath>..\..\..\..\..\项目\投影机串口控制色域统一\Project_AdjustColorGamut\Project_AdjustColorGamut\bin\Debug\SFLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Transitionals, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4747a3d6bcb35c80, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\Transitionals.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Common\MyData.cs" />
+    <Compile Include="Enter.xaml.cs">
+      <DependentUpon>Enter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserControl.xaml.cs">
+      <DependentUpon>MainUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PicShowUserControl.xaml.cs">
+      <DependentUpon>PicShowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PicDdetailsControl.xaml.cs">
+      <DependentUpon>PicDdetailsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ClientReceiver.cs" />
+    <Compile Include="VedioDetailsUserControl.xaml.cs">
+      <DependentUpon>VedioDetailsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VedioShowUserControl.xaml.cs">
+      <DependentUpon>VedioShowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Enter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="Common\ChildWindowManager.cs" />
+    <Compile Include="Common\NotifyPropertyChanged.cs" />
+    <Compile Include="Common\Package.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PicShowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PicDdetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Glass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBtnStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Shared.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VedioDetailsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VedioShowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\HistoryMuseum.MVVM.vshost.exe.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HistoryMuseum.Common\HistoryMuseum.Common.csproj">
+      <Project>{50123006-4d31-4b3b-a598-75e00ffe5b6e}</Project>
+      <Name>HistoryMuseum.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HistoryMuseum.CustomControl\HistoryMuseum.CustomControl.csproj">
+      <Project>{2e9faa77-d868-4b40-911a-ae2bb2911a72}</Project>
+      <Name>HistoryMuseum.CustomControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HistoryMuseum.Model\HistoryMuseum.Model.csproj">
+      <Project>{3bd2325c-f074-4cbe-8a8a-ae8bbf798015}</Project>
+      <Name>HistoryMuseum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HistoryMuseum.Service\HistoryMuseum.Service.csproj">
+      <Project>{857b6abc-7d05-454a-afee-1c31806297a9}</Project>
+      <Name>HistoryMuseum.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\3DTools.dll" />
+    <Content Include="bin\Debug\HistoryMuseum.Common.dll" />
+    <Content Include="bin\Debug\HistoryMuseum.Common.pdb" />
+    <Content Include="bin\Debug\HistoryMuseum.Model.dll" />
+    <Content Include="bin\Debug\HistoryMuseum.Model.pdb" />
+    <Content Include="bin\Debug\HistoryMuseum.MVVM.exe" />
+    <Content Include="bin\Debug\HistoryMuseum.MVVM.pdb" />
+    <Content Include="bin\Debug\HistoryMuseum.MVVM.vshost.exe" />
+    <Resource Include="Images\Enter.png" />
+    <Resource Include="Images\Return.png" />
+    <Resource Include="Images\EnterPic.png" />
+    <Resource Include="Images\EnterVedio.png" />
+    <Resource Include="Images\Back.png" />
+    <Resource Include="Images\Btn.png" />
+    <Resource Include="Images\Left.png" />
+    <Resource Include="Images\Right.png" />
+    <Resource Include="Images\EnterCenter.png" />
+    <Resource Include="bin\Debug\Images\bki-20131220122018-219262020.png" />
+    <Resource Include="bin\Debug\Images\14.jpg" />
+    <Resource Include="bin\Debug\Images\16.jpg" />
+    <Resource Include="bin\Debug\Images\36.jpg" />
+    <Resource Include="bin\Debug\Images\38.jpg" />
+    <Resource Include="bin\Debug\Images\3feel_20080408_1024_02.jpg" />
+    <Resource Include="bin\Debug\Images\3feel_20080408_1024_06.jpg" />
+    <Resource Include="bin\Debug\Images\43.jpg" />
+    <Resource Include="bin\Debug\Images\4ec3df5d6b2b0f5bfaf2c072.jpg" />
+    <Resource Include="bin\Debug\Images\622810_550x550_0.jpg" />
+    <Resource Include="Package\1.jpg" />
+    <Resource Include="Package\10.jpg" />
+    <Resource Include="Package\11.jpg" />
+    <Resource Include="Package\12.jpg" />
+    <Resource Include="Package\13.jpg" />
+    <Resource Include="Package\14.jpg" />
+    <Resource Include="Package\15.jpg" />
+    <Resource Include="Package\16.jpg" />
+    <Resource Include="Package\17.jpg" />
+    <Resource Include="Package\18.jpg" />
+    <Resource Include="Package\19.jpg" />
+    <Resource Include="Package\2.jpg" />
+    <Resource Include="Package\20.jpg" />
+    <Resource Include="Package\21.jpg" />
+    <Resource Include="Package\22.jpg" />
+    <Resource Include="Package\23.jpg" />
+    <Resource Include="Package\3.jpg" />
+    <Resource Include="Package\4.jpg" />
+    <Resource Include="Package\5.jpg" />
+    <Resource Include="Package\6.jpg" />
+    <Resource Include="Package\7.jpg" />
+    <Resource Include="Package\8.jpg" />
+    <Resource Include="Package\9.jpg" />
+    <Resource Include="bin\Debug\Menu\Menu.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\Menu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
+    <Folder Include="ImagesVedio\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

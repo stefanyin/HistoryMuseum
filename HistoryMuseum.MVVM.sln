@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryMuseum.MVVM", "HistoryMuseum.MVVM\HistoryMuseum.MVVM.csproj", "{BB7387EC-8A6C-4422-8C61-42E73DE4D87B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryMuseum.Model", "HistoryMuseum.Model\HistoryMuseum.Model.csproj", "{3BD2325C-F074-4CBE-8A8A-AE8BBF798015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryMuseum.Common", "HistoryMuseum.Common\HistoryMuseum.Common.csproj", "{50123006-4D31-4B3B-A598-75E00FFE5B6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryMuseum.Service", "HistoryMuseum.Service\HistoryMuseum.Service.csproj", "{857B6ABC-7D05-454A-AFEE-1C31806297A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryMuseum.Supporter", "HistoryMuseum.Supporter\HistoryMuseum.Supporter.csproj", "{FC1C9763-2970-4733-8582-6EE7293F7583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryMuseum.CustomControl", "HistoryMuseum.CustomControl\HistoryMuseum.CustomControl.csproj", "{2E9FAA77-D868-4B40-911A-AE2BB2911A72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB7387EC-8A6C-4422-8C61-42E73DE4D87B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7387EC-8A6C-4422-8C61-42E73DE4D87B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7387EC-8A6C-4422-8C61-42E73DE4D87B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7387EC-8A6C-4422-8C61-42E73DE4D87B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD2325C-F074-4CBE-8A8A-AE8BBF798015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD2325C-F074-4CBE-8A8A-AE8BBF798015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD2325C-F074-4CBE-8A8A-AE8BBF798015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD2325C-F074-4CBE-8A8A-AE8BBF798015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50123006-4D31-4B3B-A598-75E00FFE5B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50123006-4D31-4B3B-A598-75E00FFE5B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50123006-4D31-4B3B-A598-75E00FFE5B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50123006-4D31-4B3B-A598-75E00FFE5B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857B6ABC-7D05-454A-AFEE-1C31806297A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857B6ABC-7D05-454A-AFEE-1C31806297A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857B6ABC-7D05-454A-AFEE-1C31806297A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857B6ABC-7D05-454A-AFEE-1C31806297A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1C9763-2970-4733-8582-6EE7293F7583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1C9763-2970-4733-8582-6EE7293F7583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1C9763-2970-4733-8582-6EE7293F7583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1C9763-2970-4733-8582-6EE7293F7583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E9FAA77-D868-4B40-911A-AE2BB2911A72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E9FAA77-D868-4B40-911A-AE2BB2911A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E9FAA77-D868-4B40-911A-AE2BB2911A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E9FAA77-D868-4B40-911A-AE2BB2911A72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
