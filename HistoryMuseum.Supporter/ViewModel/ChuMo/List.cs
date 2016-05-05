@@ -12,7 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-
+using HistoryMuseum.Supporter.View;
+using HistoryMuseum.Supporter.Utility;
 namespace HistoryMuseum.Supporter.ViewModel.ChuMo
 {
     public class List : BaseViewModel
@@ -131,6 +132,21 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
                 OnPropertyChanged("MenuInfoList");
             }
         }
+
+        private MenuItemInfo _selectedData;
+        public MenuItemInfo SelectedData
+        {
+            get { return _selectedData; }
+            set
+            {
+                if(_selectedData !=value)
+                {
+                    _selectedData = value;
+                    OnPropertyChanged("SelectedData");
+                }
+            }
+        }
+
         public ObservableCollection<ContentMenuItemsInfo> ChildMenuInfoList
         {
             get { return this._childModelDataList; }
@@ -140,6 +156,8 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
                 OnPropertyChanged("ChildMenuInfoList");
             }
         }
+
+
         private MenuItemInfo menuItemInfoModel;
         public MenuItemInfo MenuItemInfoModel
         {
@@ -152,6 +170,8 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         }
         
         public ChuMoConInfo ChuMoCon { get; set; }
+
+        public string ChildMenuPath { get; set; }
         private Visibility vedioVisibility;
         public Visibility VedioVisibility
         {
@@ -220,16 +240,52 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
             qiYongChildCommand = new DelegateCommand<object>(ShowQiYongChildWindow, arg => true);
             #endregion
         }
+
+        public List(string _menu_xml,string _child_menu_xml)
+        {
+            ChildMenuPath = _child_menu_xml;
+            MenuSerice.Load(@_menu_xml);
+           // showBtnVisibility = Visibility.Collapsed;
+            showTitle = "内容配置：";
+            BindDate();
+            #region 一级
+            detailsCommand = new DelegateCommand<object>(ShowDetailsWindow, arg => true);
+            addCommand = new DelegateCommand(ShowAddWindow);
+            editCommand = new DelegateCommand<object>(ShowEditWindow, arg => true);
+            delCommand = new DelegateCommand<object>(ShowDelWindow, arg => true);
+            addCopyPicCommand = new DelegateCommand<object>(ShowAddCopyPicWindow, arg => true);
+            addCopyVedioCommand = new DelegateCommand<object>(ShowAddCopyVedioWindow, arg => true);
+            upDateCommand = new DelegateCommand<object>(ShowUpDateWindow, arg => true);
+            qiYongCommand = new DelegateCommand<object>(ShowQiYongWindow, arg => true);
+            #endregion
+            #region 二级
+            addChildCommand = new DelegateCommand(ShowAddChildWindow);
+            editChildCommand = new DelegateCommand<object>(ShowEditChildWindow, arg => true);
+            delChildCommand = new DelegateCommand<object>(ShowDelChildWindow, arg => true);
+            addChildCopyPicCommand = new DelegateCommand<object>(ShowAddCopyPicWindow, arg => true);
+            addChildCopyVedioCommand = new DelegateCommand<object>(ShowAddCopyVedioWindow, arg => true);
+            upDateChildCommand = new DelegateCommand<object>(ShowUpDateChildWindow, arg => true);
+            qiYongChildCommand = new DelegateCommand<object>(ShowQiYongChildWindow, arg => true);
+            #endregion
+        }
         public void ShowList(MainWindow mw)
         {
             View.ChuMo.List list = new Supporter.View.ChuMo.List();
             list.ViewModel = this;
             mw.ChildrenWinContent.Children.Add(list);
         }
+
+        public void ShowList(SettingWindow sw)
+        {
+            HistoryMuseum.Supporter.View.ChuMo.List list = new Supporter.View.ChuMo.List();
+            list.ViewModel = this;
+            sw.ChildrenWinContent.Children.Add(list);
+        }
+
         private void ShowDetailsWindow(object sender)
         {
             string s = sender.ToString();
-            string url = ChuMoCon.ChildMuneXml;
+            string url = ChildMenuPath;
             ContentMenuService.Load(@url);
             ChildBindDate(int.Parse(s));
         }
@@ -255,10 +311,14 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         {
             ContentMenuService.GetInstance().UpDate();
         }
+
+        private string _sourcePath = "\\\\"+Data.GetInstance().GetIP()+"\\Source\\";
+
         private void ShowAddCopyPicWindow(object sender)
         {
             string s = sender.ToString();
-            ChildWindowManager.Instance.ShowChildWindow(new CopyPic(menuItemInfoModel,s, ChuMoCon));
+            Console.WriteLine(_selectedData.Id);
+            ChildWindowManager.Instance.ShowChildWindow(new CopyPic(menuItemInfoModel,s, _sourcePath));
         }
         private void ShowAddCopyVedioWindow(object sender)
         {
@@ -297,6 +357,8 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         {
             var childWindow = new ViewModel.ChuMo.Add(this);
             childWindow.Show();
+            //var addwindow = new AddWindow();
+            //addwindow.Show();
         }
         private void ShowAddChildWindow()
         {
@@ -313,6 +375,7 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
             IList<MenuItemInfo> gbList = MenuSerice.GetInstance().MenuInfoList.Items;
             this.MenuInfoList = ConvertIListToList<MenuItemInfo>(gbList);
         }
+
         public void ChildBindDate(int id)
         {
             MenuItemInfo mii = MenuSerice.GetInstance().MenuInfoList.Items.Find(u => u.Id == id);
@@ -336,8 +399,11 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
             }
             this.ChildMenuInfoList = ConvertIListToList<ContentMenuItemsInfo>(gbChildList);
         }
+
+
         // **//// <summary>
-        /// 转换IList<T>为List<T>      //将IList接口泛型转为List泛型类型
+        /// 转换IList<T>为List<T>      
+        /// //将IList接口泛型转为List泛型类型
         /// </summary>
         /// <typeparam name="T">指定的集合中泛型的类型</typeparam>
         /// <param name="gbList">需要转换的IList</param>
