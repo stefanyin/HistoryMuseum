@@ -25,7 +25,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Transitionals;
 using System.ComponentModel;
-
+using HistoryMuseum.MVVM.Service;
+using SFLib;
 namespace HistoryMuseum.MVVM
 {
     /// <summary>
@@ -36,6 +37,7 @@ namespace HistoryMuseum.MVVM
         MainUserControl user;
         private ObservableCollection<Type> transitionTypes = new ObservableCollection<Type>();
 
+        ClientReceiver _receiver = new ClientReceiver();
 
         public MainWindow()
         {
@@ -43,6 +45,21 @@ namespace HistoryMuseum.MVVM
             Init();
             this.DataContext = this;
         }
+
+        private void StartServers()
+        {
+            try
+            {
+                _receiver.Start();
+                
+            }
+            catch(Exception ex)
+            {
+
+                Logger.Exception(ex.Message);
+            }
+        }
+
         void Init()
         {
             LoadTransitions(Assembly.GetAssembly(typeof(Transition)));
@@ -60,7 +77,7 @@ namespace HistoryMuseum.MVVM
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-           
+            StartServers();
         }
         public void LoadTransitions(Assembly assembly)
         {
@@ -135,8 +152,6 @@ namespace HistoryMuseum.MVVM
             WindowState = WindowState.Minimized;
         }
 
-
-
         private string _bkVideo = "";
         public string BkVideo
         {
@@ -168,7 +183,6 @@ namespace HistoryMuseum.MVVM
         }
         #endregion
 
-
         private void Background_Video_MediaEnded(object sender, RoutedEventArgs e)
         {
             BkVideo = "background_videos/bkgdvideo.avi";
@@ -177,6 +191,11 @@ namespace HistoryMuseum.MVVM
         private void Background_Video_MediaOpened(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            _receiver.Stop();
         }
     }
 

@@ -16,7 +16,7 @@
              xmlns:refl="clr-namespace:System.Reflection;assembly=mscorlib"
              xmlns:System="clr-namespace:System;assembly=mscorlib">
     <UserControl.Background>
-        <ImageBrush ImageSource="Images/Back.png" />
+        <ImageBrush ImageSource="Images/Back.jpg" />
     </UserControl.Background>
     <UserControl.Resources>
         <ResourceDictionary>

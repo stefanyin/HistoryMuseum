@@ -76,18 +76,7 @@ namespace HistoryMuseum.Service
         {
             SerializerUtil.SaveXml(Url, ChuMoConItemList);
         }
-        //public void QiYong(string id)
-        //{
-        //    ChuMoConItemList obj = GetInstance().ChuMoConItemList;
-        //    foreach (ChuMoConInfo mi in obj.Items)
-        //    {
-        //        if(mi.Id==id)
-        //        {
-        //            mi.Stauts= !mi.Stauts;
-        //        }
-        //    }
-        //    UpDate();
-        //}
+ 
         public void Del(string id)
         {
             ChuMoConItemList obj = GetInstance().ChuMoConItemList;

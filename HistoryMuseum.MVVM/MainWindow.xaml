@@ -15,9 +15,9 @@
         xmlns:transt="clr-namespace:Transitionals.Transitions;assembly=Transitionals"
 
         xmlns:refl="clr-namespace:System.Reflection;assembly=mscorlib" Loaded="Window_Loaded_1"
-        xmlns:System="clr-namespace:System;assembly=mscorlib">
+        xmlns:System="clr-namespace:System;assembly=mscorlib" Closed="Window_Closed"  >
     <Window.Background>
-        <ImageBrush ImageSource="Images/Back.png" />
+        <ImageBrush ImageSource="Images/Back.jpg" />
     </Window.Background>
     
     <Window.Resources>

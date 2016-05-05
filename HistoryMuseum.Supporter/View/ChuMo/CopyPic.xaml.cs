@@ -32,31 +32,17 @@ namespace HistoryMuseum.Supporter.View.ChuMo
            string savefilepath = "";
            string Id = "";
            MenuItemInfo _mi;
-           public CopyPic(MenuItemInfo mi,string id, ChuMoConInfo cmi)
+           public CopyPic(MenuItemInfo mi,string id, string cmi)
           {
               InitializeComponent();
               _mi = mi;
-              savefilepath = cmi.ChuMoSource;
+              savefilepath = cmi;
               Id = id;
               if (!Directory.Exists(savefilepath+"\\"+Id))
               {
                   Directory.CreateDirectory(savefilepath + "\\" + Id);
               }
-             // this.displaytimebythread.Text = DateTime.Now.ToLocalTime().ToString("yyyy年mm月dd日 hh:mm:ss"); ;
-              //timethread = new Thread(new ThreadStart(dispatcherthread));
           }
-          //public void dispatcherthread()
-          //{
-          //    //可以通过循环条件来控制ui的更新
-          //     while (true)
-          //    {
-          //        ///线程优先级，最长超时时间，方法委托（无参方法）
-          //        // displaytimebythread.Dispatcher.BeginInvoke(
-          //            DispatcherPriority.Normal, new Action(updatetime));
-          //        Thread.Sleep(1000);                
-          //    }
-          //}
-  
           
           private void updatetime()
           {

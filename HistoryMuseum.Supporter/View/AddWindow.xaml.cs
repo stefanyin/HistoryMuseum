@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HistoryMuseum.Supporter.ViewModel;
-using HistoryMuseum.Service;
-using HistoryMuseum.Supporter.Common;
-namespace HistoryMuseum.Supporter.View
+namespace HistoryMuseum.Supporter.ViewModel
 {
     /// <summary>
-    /// SettingWindow.xaml 的交互逻辑
+    /// AddWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class SettingWindow : Window
+    public partial class AddWindow : Window
     {
-        public SettingWindow()
+        public AddWindow()
         {
             InitializeComponent();
-            childWindow.DataContext = ChildWindowManager.Instance;
-            this.DataContext = new SettingWindowVM(this);
+            this.DataContext =new AddWindowVM();
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Width="auto" Height="auto" Margin="2,5,0,5"
+             Width="Auto" Height="Auto" Margin="2,5,0,5"
              >
     <UserControl.Resources>
         <ResourceDictionary >
@@ -29,7 +29,7 @@
                 Foreground="White" FontSize="13.333" 
                 FontFamily="Arial" HorizontalAlignment="Left" Margin="0,35,0,0"
                 Width="60" VerticalAlignment="Top" Height="30" Grid.Row="2"/>
-                <Button Name="btnUpDate" Content="上传" 
+                <Button Name="btnUpDate" Content="保存" 
                 Command="{Binding UpDateCommand}"
                 Template="{DynamicResource GlassButton}" 
                 Foreground="White" FontSize="13.333" 
@@ -45,10 +45,10 @@
                       CanUserReorderColumns="False" AlternationCount="2"  RowHeaderWidth="0" 
                       >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="标题名" Binding="{Binding Path=MenuName ,Mode=TwoWay}" Width="100"/>
-                        <DataGridTextColumn Header="排序号" Binding="{Binding Path=OrderNum ,Mode=TwoWay}" Width="100"/>
-                        <DataGridTextColumn Header="内容选项" Binding="{Binding Path=QiYong ,Mode=OneWay}" Width="100"/>
-                        <DataGridTemplateColumn Header="操作" Width="*" >
+                        <DataGridTextColumn Header="标题名" Binding="{Binding Path=MenuName ,Mode=TwoWay}" Width="auto"/>
+                        <DataGridTextColumn Header="排序号" Binding="{Binding Path=OrderNum ,Mode=TwoWay}" Width="auto"/>
+                        <DataGridTextColumn Header="内容选项" Binding="{Binding Path=QiYong ,Mode=OneWay}" Width="auto"/>
+                        <DataGridTemplateColumn Header="操作" Width="auto" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <WrapPanel>
@@ -83,7 +83,7 @@
                 Foreground="White" FontSize="13.333" 
                 FontFamily="Arial" HorizontalAlignment="Left" Margin="0,35,0,0"
                 Width="60" VerticalAlignment="Top" Height="30" Grid.Row="2"/>
-                <Button Name="btnChildUpDate" Content="上传" 
+                <Button Name="btnChildUpDate" Content="保存" 
                 Command="{Binding UpDateChildCommand}"
                 Template="{DynamicResource GlassButton}" 
                 Visibility="{Binding  Path=ShowBtnVisibility ,Mode=TwoWay ,RelativeSource={RelativeSource AncestorType={x:Type Grid}}}"
@@ -98,13 +98,14 @@
                       CanUserSortColumns="False" 
                       CanUserResizeColumns="False" CanUserResizeRows="False"  SelectionMode="Single"
                       CanUserReorderColumns="False" AlternationCount="2"  RowHeaderWidth="0" 
+                      SelectedItem="{Binding SelectedData}"
                       >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="父级" Binding="{Binding Path=MenuName ,Mode=TwoWay}" Width="100"/>
-                        <DataGridTextColumn Header="主题" Binding="{Binding Path=ZhuTi ,Mode=TwoWay}" Width="100"/>
-                        <DataGridTextColumn Header="排序号" Binding="{Binding Path=OrderNum ,Mode=TwoWay}" Width="100"/>
-                        <DataGridTextColumn Header="状态" Binding="{Binding Path=QiYong ,Mode=OneWay}" Width="100"/>
-                        <DataGridTemplateColumn Header="操作" Width="*" >
+                        <DataGridTextColumn Header="父级" Binding="{Binding Path=MenuName ,Mode=TwoWay}" Width="auto"/>
+                        <DataGridTextColumn Header="主题" Binding="{Binding Path=ZhuTi ,Mode=TwoWay}" Width="auto"/>
+                        <DataGridTextColumn Header="排序号" Binding="{Binding Path=OrderNum ,Mode=TwoWay}" Width="auto"/>
+                        <DataGridTextColumn Header="状态" Binding="{Binding Path=QiYong ,Mode=OneWay}" Width="auto"/>
+                        <DataGridTemplateColumn Header="操作" Width="auto" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <WrapPanel>

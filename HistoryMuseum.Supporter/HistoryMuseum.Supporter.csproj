@@ -37,6 +37,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="3DTools">
+      <HintPath>..\Dll\3DTools.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism.Composition, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
       <Private>True</Private>
@@ -66,15 +69,17 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MyMVVM">
-      <HintPath>..\..\TextWrap.MvvM\MyMVVM\bin\Debug\MyMVVM.dll</HintPath>
+      <HintPath>..\Dll\MyMVVM.dll</HintPath>
     </Reference>
     <Reference Include="SFLib">
-      <HintPath>..\..\..\..\..\项目\投影机串口控制色域统一\Project_AdjustColorGamut\Project_AdjustColorGamut\bin\Debug\SFLib.dll</HintPath>
+      <HintPath>..\Dll\SFLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,6 +87,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Transitionals">
+      <HintPath>..\Dll\Transitionals.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -93,6 +101,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Utility\Data.cs" />
+    <Compile Include="ViewModel\AddWindowVM.cs" />
+    <Compile Include="View\AddWindow.xaml.cs">
+      <DependentUpon>AddWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ChuMo\Add.cs" />
     <Compile Include="ViewModel\ChuMo\AddChild.cs" />
     <Compile Include="ViewModel\ChuMo\Edit.cs" />
@@ -148,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\GridBord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

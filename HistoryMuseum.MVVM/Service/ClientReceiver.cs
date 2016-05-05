@@ -27,6 +27,7 @@ namespace HistoryMuseum.MVVM.Service
         TcpClient _connector;
         NetworkStream _dataStream;
         string _menuPath = AppDomain.CurrentDomain.BaseDirectory + "Menu//Menu.xml";
+        string _childMenu = AppDomain.CurrentDomain.BaseDirectory + "Menu//ChildMenu.xml";
         int _blockLength = 1024;
 
         public void Start()
@@ -86,8 +87,71 @@ namespace HistoryMuseum.MVVM.Service
                 {
                     numberOfReadBytes = 0;
                 }
+
+                if(numberOfReadBytes !=0)
+                {
+                    string command = Encoding.Default.GetString(receiveData.buffer, 0, numberOfReadBytes);
+                    switch(command)
+                    {
+                        case "GetMenuData":
+                            SendFile(receiveData,_menuPath);
+                            break;
+                        case "SendMenuData":
+                            ReceiveFile(receiveData, _menuPath);
+                            //RestartThis();
+                            break;
+                        case "SendChildMenuData":
+                            ReceiveFile(receiveData, _childMenu);
+                            RestartThis();
+                            break;
+                        case "GetChildMenuData":
+                            SendFile(receiveData, _childMenu);
+                            break;
+                    }
+                }
             }
 
         }
+
+        private void SendFile(StateObject receiveData,string _filePath)
+        {
+            FileStream fs = new FileStream(_filePath, FileMode.Open);
+            int readLength = 0;
+            byte[] data_block = new byte[_blockLength];
+
+            while ((readLength = fs.Read(data_block, 0, _blockLength)) > 0)
+            {
+                receiveData.client.GetStream().Write(data_block, 0, readLength);
+            }
+            //receiveData.client.GetStream().Flush();
+            fs.Close();
+            receiveData.client.GetStream().Flush();
+            receiveData.client.Close();
+        }
+
+        private void ReceiveFile(StateObject receiveData,string filepath)
+        {
+            TcpClient client = receiveData.client;
+            NetworkStream ns = client.GetStream();
+            FileStream fs_menu = new FileStream(filepath, FileMode.Create);
+        
+            int readLength = 0;
+            byte[] data_block = new byte[_blockLength];
+            while((readLength= ns.Read(data_block,0,_blockLength))>0)
+            {
+                fs_menu.Write(data_block, 0, readLength);
+            }
+
+            fs_menu.Close();
+            receiveData.client.GetStream().Flush();
+        }
+
+        private static void RestartThis()
+        {
+            Process.Start("Restart.bat");
+        }
+
+
+
     }
 }
