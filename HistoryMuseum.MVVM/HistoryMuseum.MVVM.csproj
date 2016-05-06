@@ -228,16 +228,6 @@
     <Resource Include="Images\Left.png" />
     <Resource Include="Images\Right.png" />
     <Resource Include="Images\EnterCenter.png" />
-    <Resource Include="bin\Debug\Images\bki-20131220122018-219262020.png" />
-    <Resource Include="bin\Debug\Images\14.jpg" />
-    <Resource Include="bin\Debug\Images\16.jpg" />
-    <Resource Include="bin\Debug\Images\36.jpg" />
-    <Resource Include="bin\Debug\Images\38.jpg" />
-    <Resource Include="bin\Debug\Images\3feel_20080408_1024_02.jpg" />
-    <Resource Include="bin\Debug\Images\3feel_20080408_1024_06.jpg" />
-    <Resource Include="bin\Debug\Images\43.jpg" />
-    <Resource Include="bin\Debug\Images\4ec3df5d6b2b0f5bfaf2c072.jpg" />
-    <Resource Include="bin\Debug\Images\622810_550x550_0.jpg" />
     <Resource Include="Package\1.jpg" />
     <Resource Include="Package\10.jpg" />
     <Resource Include="Package\11.jpg" />
