@@ -97,13 +97,15 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
             if (_closeCommand != null&&this.Validate())
             {
                 int i = 1;
+                int orderid = int.Parse(_orderNum);
                 if (MenuSerice.GetInstance().MenuInfoList.Items.Count > 0)
                 {
                     i = MenuSerice.GetInstance().MenuInfoList.Items.Max(u => u.Id) + 1;
                 }
                 var obj = new MenuItemInfo()
                 {
-                    MenuName = _menuName,Id=i,OrderNum= Convert.ToInt32(_orderNum),Stauts= true,Meno=_meno
+                    MenuName = _menuName,Id= orderid,
+                    OrderNum= Convert.ToInt32(_orderNum),Stauts= true,Meno=_meno
                 };
 
                 MenuSerice.GetInstance().Add(obj);

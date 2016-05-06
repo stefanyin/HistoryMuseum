@@ -19,7 +19,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
 namespace HistoryMuseum.Supporter.View.ChuMo
 {
     /// <summary>
@@ -38,9 +37,9 @@ namespace HistoryMuseum.Supporter.View.ChuMo
               _mi = mi;
               savefilepath = cmi;
               Id = id;
-              if (!Directory.Exists(savefilepath+"\\"+Id))
+              if (!Directory.Exists(savefilepath+"\\"+_mi.MenuName+"\\"+Id))
               {
-                  Directory.CreateDirectory(savefilepath + "\\" + Id);
+                  Directory.CreateDirectory(savefilepath + "\\" + _mi.MenuName + "\\"+Id);
               }
           }
           
@@ -90,29 +89,36 @@ namespace HistoryMuseum.Supporter.View.ChuMo
   
           private void button4_click(object sender, RoutedEventArgs e)
           {
-              string filename=this.srcfile.Text.Trim();
-              string destpath = savefilepath + "\\" + _mi.Id.ToString() + "\\" + Id.ToString()+ ".png";
-              if(!File.Exists(filename))
-              {
-                  MessageBox.Show("源文件不存在");
-                  return;
-              }
-              
-              ///copy file and nodify ui that rate of progress of file copy          
-              this.copyflag.Text = "开始复制。。。";
-  
-              //设置进度条最大值，这句代码写的有点郁闷
-              this.copyprogress.Maximum = (new FileInfo(filename)).Length;
-  
-              //保存复制文件信息，以进行传递
-              copyfileinfo c = new copyfileinfo() { sourcepath = filename, destpath = destpath };
-              //线程异步调用复制文件
-              copythread = new Thread(new ParameterizedThreadStart (copyfile));           
-              copythread.Start(c);
-  
-              this.copyflag.Text = "复制完成。。。";
-             
-             
+            try
+            {
+                string filePath = this.srcfile.Text.Trim();
+                string filename = System.IO.Path.GetFileNameWithoutExtension(filePath);
+                string destpath = savefilepath + "\\" + _mi.MenuName + "\\" +Id+"\\"+ Id + ".jpg";
+                if (!File.Exists(filePath))
+                {
+                    MessageBox.Show("源文件不存在");
+                    return;
+                }
+
+                ///copy file and nodify ui that rate of progress of file copy          
+                this.copyflag.Text = "开始复制。。。";
+
+                //设置进度条最大值，这句代码写的有点郁闷
+                this.copyprogress.Maximum = (new FileInfo(filePath)).Length;
+
+                //保存复制文件信息，以进行传递
+                copyfileinfo c = new copyfileinfo() { sourcepath = filePath, destpath = destpath };
+                //线程异步调用复制文件
+                copythread = new Thread(new ParameterizedThreadStart(copyfile));
+                copythread.Start(c);
+
+                this.copyflag.Text = "复制完成。。。";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }
          }
          /// <summary>
          /// 复制文件的委托方法

@@ -39,10 +39,6 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         private ICommand qiYongChildCommand;
         #endregion
 
-        private ObservableCollection<MenuItemInfo> _ipModelDataList;
-
-        private ObservableCollection<ContentMenuItemsInfo> _childModelDataList;
-        public View.ChuMo.List View { get; set; }
         #region 一级
         public ICommand DetailsCommand
         {
@@ -122,7 +118,13 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
             get { return qiYongChildCommand; }
             set { qiYongChildCommand = value; }
         }
-        #endregion
+        #endregion 菜单
+
+        private ObservableCollection<MenuItemInfo> _ipModelDataList;
+
+        private ObservableCollection<ContentMenuItemsInfo> _childModelDataList;
+        public View.ChuMo.List View { get; set; }
+     
         public ObservableCollection<MenuItemInfo> MenuInfoList
         {
             get { return this._ipModelDataList; }
@@ -154,6 +156,20 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
             {
                 this._childModelDataList = value;
                 OnPropertyChanged("ChildMenuInfoList");
+            }
+        }
+
+
+        private string _myTiltle;
+        public  string MyTiTltle
+        {
+            get
+            {
+                return _myTiltle;
+            }
+            set
+            {
+                _myTiltle = value;
             }
         }
 
@@ -299,7 +315,8 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         private void ShowEditChildWindow(object sender)
         {
             string s = sender.ToString();
-            var childWindow = new ViewModel.ChuMo.EditChild(this, int.Parse(s));
+            int c_id = menuItemInfoModel.Id;
+            var childWindow = new ViewModel.ChuMo.EditChild(this,c_id);
             childWindow.Show();
         }
         private void ShowUpDateWindow(object sender)
@@ -317,11 +334,10 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         private void ShowAddCopyPicWindow(object sender)
         {
             string s = sender.ToString();
-            Console.WriteLine(_selectedData.Id);
             ChildWindowManager.Instance.ShowChildWindow(new CopyPic(menuItemInfoModel,s, _sourcePath));
         }
         private void ShowAddCopyVedioWindow(object sender)
-        {
+        { 
             string s = sender.ToString();
             ChildWindowManager.Instance.ShowChildWindow(new CopyVedio(menuItemInfoModel,s, ChuMoCon));
         } 
@@ -357,7 +373,7 @@ namespace HistoryMuseum.Supporter.ViewModel.ChuMo
         {
             var childWindow = new ViewModel.ChuMo.Add(this);
             childWindow.Show();
-            //var addwindow = new AddWindow();
+            //var addwindow = new AddWindow(); 
             //addwindow.Show();
         }
         private void ShowAddChildWindow()

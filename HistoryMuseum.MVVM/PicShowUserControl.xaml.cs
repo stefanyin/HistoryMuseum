@@ -194,7 +194,7 @@ namespace HistoryMuseum.MVVM
         {
             foreach (ContentMenuItemsInfo item in Items)
             {
-                string picUrl = System.AppDomain.CurrentDomain.BaseDirectory + "Source\\" + item.MenuItemInfoId.ToString() + "\\" + item.Id.ToString() + ".png";
+                string picUrl = System.AppDomain.CurrentDomain.BaseDirectory + "Source\\" +item.MenuName+"\\"+ item.Id.ToString() + "\\" + item.Id.ToString() + ".jpg";
                 ImageBrush b3 = new ImageBrush();
                 if (File.Exists(picUrl))
                 {

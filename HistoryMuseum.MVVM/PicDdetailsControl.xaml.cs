@@ -89,7 +89,7 @@ namespace HistoryMuseum.MVVM
 
             currentsize = currentSize;
             ContentMenuItemsInfo obj = _items.Take(number * currentSize).Skip(number * (currentSize - 1)).First();//刷选第currentSize页要显示的记录集  
-            string picUrl = System.AppDomain.CurrentDomain.BaseDirectory + "Source\\" + obj.MenuItemInfoId.ToString() + "\\" + obj.Id.ToString() + ".png";
+            string picUrl = System.AppDomain.CurrentDomain.BaseDirectory + "Source\\" +obj.MenuName+"\\"+ obj.Id.ToString() + "\\" + obj.Id.ToString() + ".jpg";
             ImageBrush b3 = new ImageBrush();
             if (File.Exists(picUrl))
             {
